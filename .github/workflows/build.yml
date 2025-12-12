@@ -1,7 +1,7 @@
 name: Build and Deploy to Steam Workshop
 
 env:
-  workshopId: '3526439840'
+  workshopId: '3007992575'
   ProjectFiles: 'Source/ToggleableDeepResourceMap.csproj' # e.g. 'Source/Mod1.csproj, Source/Mod2.csproj'
 
 on:
