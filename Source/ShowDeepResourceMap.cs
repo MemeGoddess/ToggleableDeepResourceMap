@@ -12,13 +12,13 @@ namespace ShowDeepResourceMap
 {
     [StaticConstructorOnStartup]
     [HarmonyPatch]
-    public static class ShowDeepResourceMap
+    public class ShowDeepResourceMap : Mod
     {
         public static KeyBindingDef ToggleShowDeepResourcesMap = new KeyBindingDef();
         public static bool ShowDeepResource = false;
-        static ShowDeepResourceMap()
+        public ShowDeepResourceMap(ModContentPack content) : base(content)
         {
-            var harmony = new Harmony("com.ShowDeepResourceMap.patch");
+            var harmony = new Harmony("memegoddess.ToggleableDeepResourceMap");
             harmony.PatchAll();
         }
 
@@ -82,35 +82,6 @@ namespace ShowDeepResourceMap
                 SoundDefOf.Checkbox_TurnedOn.PlayOneShotOnCamera();
             else
                 SoundDefOf.Checkbox_TurnedOff.PlayOneShotOnCamera();
-        }
-    }
-
-    public class ShowDeepResourceMapConfig : Mod
-    {
-        public static ShowDeepResourceMapSettings Settings;
-        public ShowDeepResourceMapConfig(ModContentPack content) : base(content)
-        {
-
-        }
-    }
-
-    public class ShowDeepResourceMapSettings : ModSettings
-    {
-        public KeyBindingDef ToggleShowDeepResourceMap;
-
-        public override void ExposeData()
-        {
-            Scribe_Values.Look<KeyBindingDef>(ref this.ToggleShowDeepResourceMap, "showDeepResourceMapKey");
-            base.ExposeData();
-
-        }
-
-        public void DoWindowContents(Rect inRect)
-        {
-            Listing_Standard ls = new Listing_Standard();
-            ls.Begin(inRect);
-            ls.Label("Test");
-
         }
     }
 
