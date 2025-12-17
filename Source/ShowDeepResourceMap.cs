@@ -69,7 +69,7 @@ namespace ShowDeepResourceMap
             if (worldView || row == null)
                 return;
 
-            row.ToggleableIcon(ref ShowDeepResource, TexButton.ShowZones, "Show Deep Resources", SoundDefOf.Mouseover_ButtonToggle);
+            row.ToggleableIcon(ref ShowDeepResource, ContentFinder<Texture2D>.Get("Mine"), "Show Deep Resources", SoundDefOf.Mouseover_ButtonToggle);
             CheckKeyBindingToggle(ShowDeepResourceKeysDefOf.ShowDeepResourceKey, ref ShowDeepResource);
         }
 
