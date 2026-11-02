@@ -23,7 +23,7 @@ namespace ShowDeepResourceMap
         public ShowDeepResourceMap(ModContentPack content) : base(content)
         {
             var harmony = new Harmony("memegoddess.ToggleableDeepResourceMap");
-            harmony.PatchAll();
+            harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
 
         [HarmonyPatch(typeof(DeepResourceGrid), nameof(DeepResourceGrid.DeepResourcesOnGUI))]

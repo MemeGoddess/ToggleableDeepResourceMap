@@ -1,42 +1,35 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net472</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <OutputType>Library</OutputType>
         <RootNamespace>Showdeepresourcemap</RootNamespace>
         <AssemblyName>Showdeepresourcemap</AssemblyName>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-        <OutputPath>..\1.6\Assemblies\</OutputPath>
+        <Version>1.7</Version>
+    	<GenerateDependencyFile>false</GenerateDependencyFile>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
         <DebugSymbols>true</DebugSymbols>
         <DebugType>portable</DebugType>
         <Optimize>false</Optimize>
-        <DefineConstants>DEBUG;TRACE</DefineConstants>
+        <OutputPath>..\$(Version)\Assemblies\</OutputPath>
+        <DefineConstants>DEBUG</DefineConstants>
         <WarningLevel>4</WarningLevel>
         <Prefer32Bit>false</Prefer32Bit>
-        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-        <DebugType>none</DebugType>
+    <!-- Release configuration -->
+    <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+        <DebugType>embedded</DebugType>
         <Optimize>true</Optimize>
-        <DefineConstants>TRACE</DefineConstants>
+        <OutputPath>..\$(Version)\Assemblies\</OutputPath>
         <WarningLevel>4</WarningLevel>
         <Prefer32Bit>false</Prefer32Bit>
     </PropertyGroup>
     <ItemGroup>
-        <None Include="..\About\About.xml" />
-        <None Include="..\About\Preview.png" />
-        <None Include="..\Common\Defs\**" />
-        <None Include="..\Common\Languages\**" />
-        <None Include="..\Common\Patches\**" />
-    </ItemGroup>
-    <ItemGroup>
-        <PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.4633" />
-        <PackageReference Include="Lib.Harmony" Version="2.2.2" PrivateAssets="all">
-            <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
+        <PackageReference Include="Krafs.Rimworld.Ref" Version="$(Version).*-*" />
+        <PackageReference Include="Lib.Harmony" Version="2.2.2" PrivateAssets="all" />
         <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
     </ItemGroup>
 </Project>
